@@ -66,4 +66,4 @@ class Bot(commands.Bot):
 
 
 bot = Bot()
-print(bot.REPO_URL)
+bot.run()
