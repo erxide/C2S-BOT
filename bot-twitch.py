@@ -13,7 +13,7 @@ class Bot(commands.Bot):
             prefix='!',
             initial_channels=['dhalsiiim']
         )
-        self.REPO_URL = os.getenv("REPO_URL"),
+        self.REPO_URL = os.getenv("REPO_URL")
 
     async def event_ready(self):
         print(f'Connecté au chat Twitch en tant que : {self.nick}')
@@ -66,4 +66,4 @@ class Bot(commands.Bot):
 
 
 bot = Bot()
-bot.run()
+print(bot.REPO_URL)
