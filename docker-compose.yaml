@@ -1,0 +1,9 @@
+services:
+  discord-bot:
+    build: .
+    image: c2s-bot:latest
+    container_name: discord-bot
+    env_file:
+      - .env
+    restart: unless-stopped
+
