@@ -1,9 +1,20 @@
 services:
   discord-bot:
-    build: .
-    image: c2s-bot:latest
+    build:
+      context: .
+      dockerfile: dockerfile-bot-discord
+    image: c2s-discord-bot:latest
     container_name: discord-bot
     env_file:
       - .env
     restart: unless-stopped
 
+  twitch-bot:
+    build:
+      context: .
+      dockerfile: dockerfile-bot-twitch
+    image: c2s-twitch-bot:latest
+    container_name: twitch-bot
+    env_file:
+      - .env
+    restart: unless-stopped
