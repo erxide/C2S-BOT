@@ -40,7 +40,7 @@ class Bot(commands.Bot):
         await ctx.send("C2S powered 😎")
     
     @commands.command(name="repo")
-    async def c2s_command(self, ctx):
+    async def repo_command(self, ctx):
         await ctx.send(f"Voici le repo du bot : {self.REPO_URL}")
 
     @commands.command(name="boule")
@@ -58,7 +58,7 @@ class Bot(commands.Bot):
         await ctx.send(f"@{ctx.author.name} {random.choice(reponses)}")
 
     @commands.command(name="fesses")
-    async def c2s_command(self, ctx):
+    async def fesses_command(self, ctx):
         if ctx.author.name == "caca2squidgame" or ctx.author.name == "dhalsiiim":
             await ctx.send("SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss")
         else :
