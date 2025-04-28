@@ -1,6 +1,7 @@
 from twitchio.ext import commands
 import os
 import random 
+from unidecode import unidecode
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -21,13 +22,13 @@ class Bot(commands.Bot):
     async def event_message(self, message):
         if message.echo or message.author.name == "cdeuxs":
             return
-
-        print(f'{message.author.name}: {message.content}')
-
-        if "quoi" in message.content.lower().split():
-            await message.channel.send(f"@{message.author.name} quoicoubeh")
         
-        if "caca" in message.content.lower().split():
+        text = unidecode(message.content.lower())
+
+        if "quoi" in text.split():
+            await message.channel.send(f"@{message.author.name} quoicoubeh")
+
+        if "caca" in text.split():
             await message.channel.send(f"@{message.author.name} caca ? comme caca2squidgame mon createur!")
 
         if len(message.content.split()) >= 30:
