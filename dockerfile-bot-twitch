@@ -16,6 +16,6 @@ WORKDIR /app
 
 COPY --from=builder /install/deps /usr/local
 
-COPY bot-twitch.py .
+COPY bot_twitch.py .
 
 CMD ["python", "bot-twitch.py"]
