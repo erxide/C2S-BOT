@@ -1,4 +1,5 @@
 from twitchio.ext import commands
+from openai import OpenAI
 import os
 import random 
 from unidecode import unidecode
@@ -21,6 +22,7 @@ class Bot(commands.Bot):
         )
         self.REPO_URL = os.getenv("REPO_URL")
         self.TurnOff = False
+        self.ClientOpenAI = OpenAI()
 
     async def event_ready(self):
         print(f'Connecté au chat Twitch en tant que : {self.nick}')
@@ -86,7 +88,23 @@ class Bot(commands.Bot):
         if ctx.author.name in ADMIN:
             self.TurnOff = True
             await ctx.send("Salut a la prochaine")
-        
+
+    @commands.command(name="gpt")
+    async def gpt_command(self, ctx):
+        if ctx.author.name in ADMIN:
+            user_input = "donne une réponse courte : " + ctx.message.content[len(ctx.prefix) + len(ctx.command.name) + 1:]
+
+            response = self.ClientOpenAI.chat.completions.create(
+                model="gpt-4-1106-preview",
+                messages=[
+                    {"role": "user", "content": user_input}
+                ],
+                max_tokens=100
+            )
+
+            gpt_text = response.choices[0].message.content.strip()
+
+            await ctx.send(f'@{ctx.author.name} {gpt_text[:480]}') 
 
 
 bot = Bot()
