@@ -18,4 +18,4 @@ COPY --from=builder /install/deps /usr/local
 
 COPY bot_twitch.py .
 
-CMD ["python", "bot-twitch.py"]
+CMD ["python", "bot_twitch.py"]
