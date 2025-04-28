@@ -6,6 +6,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+ADMIN = [
+    "caca2squidgame",
+    "dhalsiiim"
+]
+
 class Bot(commands.Bot):
 
     def __init__(self):
@@ -15,15 +20,20 @@ class Bot(commands.Bot):
             initial_channels=['dhalsiiim']
         )
         self.REPO_URL = os.getenv("REPO_URL")
+        self.TurnOff = False
 
     async def event_ready(self):
         print(f'Connecté au chat Twitch en tant que : {self.nick}')
 
     async def event_message(self, message):
+        
         if message.echo or message.author.name == "cdeuxs":
             return
         
         text = unidecode(message.content.lower())
+
+        if self.TurnOff and not text.startswith('!turnon'):
+            return
 
         if "quoi" in text.split():
             await message.channel.send(f"@{message.author.name} quoicoubeh")
@@ -60,10 +70,23 @@ class Bot(commands.Bot):
 
     @commands.command(name="fesses")
     async def fesses_command(self, ctx):
-        if ctx.author.name == "caca2squidgame" or ctx.author.name == "dhalsiiim":
+        if ctx.author.name in ADMIN:
             await ctx.send("SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss SSSsss")
         else :
             await ctx.send("fesses")
+
+    @commands.command(name="turnOn")
+    async def turnOn_command(self, ctx):
+        if ctx.author.name in ADMIN:
+            self.TurnOff = False
+            await ctx.send("Je suis de retour ^^")
+
+    @commands.command(name="turnOff")
+    async def turnOff_command(self, ctx):
+        if ctx.author.name in ADMIN:
+            self.TurnOff = True
+            await ctx.send("Salut a la prochaine")
+        
 
 
 bot = Bot()
