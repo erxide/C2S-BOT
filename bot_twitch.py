@@ -115,7 +115,7 @@ class Bot(commands.Bot):
                 + ctx.message.content[len(ctx.prefix) + len(ctx.command.name) + 1 :]
             )
 
-            response = self.ClientOpenAI.chat.completions.create(
+            response = self.client_openia.chat.completions.create(
                 model="gpt-4-1106-preview",
                 messages=[{"role": "user", "content": user_input}],
                 max_tokens=100,
