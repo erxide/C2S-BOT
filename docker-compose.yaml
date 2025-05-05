@@ -17,4 +17,6 @@ services:
     container_name: twitch-bot
     env_file:
       - .env
+    volumes:
+      - ./config-twitch.json:/app/config-twitch.json
     restart: unless-stopped
