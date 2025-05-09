@@ -16,6 +16,10 @@ WORKDIR /app
 
 COPY --from=builder /install/deps /usr/local
 
-COPY bot-discord.py .
+COPY ./twitch/bot.py .
 
-CMD ["python", "bot-discord.py"]
+COPY ./twitch/cmd/ ./cmd/
+
+COPY ./twitch/utils/ ./utils/
+
+CMD ["python", "bot.py"]

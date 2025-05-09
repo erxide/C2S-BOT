@@ -1,22 +1,12 @@
 services:
-  discord-bot:
-    build:
-      context: .
-      dockerfile: dockerfile-bot-discord
-    image: c2s-discord-bot:latest
-    container_name: discord-bot
-    env_file:
-      - .env
-    restart: unless-stopped
-
   twitch-bot:
     build:
       context: .
-      dockerfile: dockerfile-bot-twitch
-    image: c2s-twitch-bot:latest
-    container_name: twitch-bot
+      dockerfile: dockerfile-twitch
+    image: c2s-bot:latest
+    container_name: c2s-bot
     env_file:
       - .env
     volumes:
-      - ./config-twitch.json:/app/config-twitch.json
+      - ./twitch/config.json:/app/config.json
     restart: unless-stopped
