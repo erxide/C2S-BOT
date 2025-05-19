@@ -1,6 +1,8 @@
+"""Cmd rmPr"""
 import json
 
-async def rmPr_cmd(self, ctx, user: str = None):
+async def rmpr_cmd(self, ctx, user: str = None):
+    """fonction de la cmd rmPr"""
     if ctx.author.name in self.config['ADMIN']:
         if user is None:
             await ctx.send("Veuillez spécifier un utilisateur. Exemple : !rmPr @misty_toonz")

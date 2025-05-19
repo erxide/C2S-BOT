@@ -1,7 +1,9 @@
+"""Cmd gpt"""
 import asyncio
 from utils.split_by_words import split_by_words
 
 async def gpt_cmd(self, ctx):
+    """Fonction de la cmd gpt"""
     if ctx.author.name in self.config['ADMIN'] or ctx.author.name in self.config['PRENIUM']:
         user_input = (
             "donne une réponse courte : "
@@ -20,4 +22,4 @@ async def gpt_cmd(self, ctx):
 
         for chunk in chunks:
             await ctx.send(f"@{ctx.author.name} {chunk}")
-            await asyncio.sleep(1) 
+            await asyncio.sleep(1)

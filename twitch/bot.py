@@ -1,26 +1,21 @@
-"""Ce script lance le bot twitch C2S"""
-
-import asyncio
+"""bot twitch C2S"""
+from cmd.c2s import c2s_cmd
+from cmd.repo import repo_cmd
+from cmd.boule import boule_cmd
+from cmd.fesses import fesses_cmd
+from cmd.turnon import turnon_cmd
+from cmd.turnoff import turnoff_cmd
+from cmd.gpt import gpt_cmd
+from cmd.addpr import addpr_cmd
+from cmd.rmpr import rmpr_cmd
 import os
-import random
 import json
 from twitchio.ext import commands
 from openai import OpenAI
 from unidecode import unidecode
 from dotenv import load_dotenv
 
-from cmd.c2s import c2s_cmd
-from cmd.repo import repo_cmd
-from cmd.boule import boule_cmd
-from cmd.fesses import fesses_cmd
-from cmd.turnOn import turnOn_cmd
-from cmd.turnOff import turnOff_cmd
-from cmd.gpt import gpt_cmd
-from cmd.addPr import addPr_cmd
-from cmd.rmPr import rmPr_cmd
-
 load_dotenv()
-
 
 class C2SBOT(commands.Bot):
     """class du bot twitch"""
@@ -38,6 +33,7 @@ class C2SBOT(commands.Bot):
         print(f"Connecté au chat Twitch en tant que : {self.nick}")
 
     def get_config(self):
+        """fonction pour ouvrir et charger le fichier de config"""
         with open("config.json", "r", encoding="utf-8") as f:
             return json.load(f)
 
@@ -68,39 +64,48 @@ class C2SBOT(commands.Bot):
 
     @commands.command(name="c2s")
     async def c2s_command(self, ctx):
-        await c2s_cmd(self, ctx)
+        """fonction qui appelle la fonction c2s"""
+        await c2s_cmd(ctx)
 
     @commands.command(name="repo")
     async def repo_command(self, ctx):
+        """fonction qui appelle la fonction repo"""
         await repo_cmd(self, ctx)
 
     @commands.command(name="boule")
     async def boule_de_cristal(self, ctx):
-        await boule_cmd(self, ctx)
+        """fonction qui appelle la fonction boule"""
+        await boule_cmd(ctx)
 
     @commands.command(name="fesses")
     async def fesses_command(self, ctx):
+        """fonction qui appelle la fonction fesses"""
         await fesses_cmd(self, ctx)
 
     @commands.command(name="turnOn")
     async def turn_on_command(self, ctx):
-        await turnOn_cmd(self, ctx)
+        """fonction qui appelle la fonction turnOn"""
+        await turnon_cmd(self, ctx)
 
     @commands.command(name="turnOff")
     async def turn_off_command(self, ctx):
-        await turnOff_cmd(self, ctx)
+        """fonction qui appelle la fonction turnOff"""
+        await turnoff_cmd(self, ctx)
 
     @commands.command(name="gpt")
     async def gpt_command(self, ctx):
+        """fonction qui appelle la fonction gpt"""
         await gpt_cmd(self, ctx)
 
     @commands.command(name="addPr")
     async def add_pr(self, ctx, user: str = None):
-        await addPr_cmd(self, ctx, user)
+        """fonction qui appelle la fonction addPr"""
+        await addpr_cmd(self, ctx, user)
 
     @commands.command(name="rmPr")
     async def remove_pr(self, ctx, user: str = None):
-        await rmPr_cmd(self, ctx, user)
+        """fonction qui appelle la fonction rmPr"""
+        await rmpr_cmd(self, ctx, user)
 
 
 if __name__ == '__main__':

@@ -1,6 +1,8 @@
+"""Cmd boule"""
 import random
 
-async def boule_cmd(self, ctx):
+async def boule_cmd(ctx):
+    """fonction de la cmd boule"""
     reponses = [
             "Oui, clairement ! 🔮",
             "Non, sûrement pas. ❌",

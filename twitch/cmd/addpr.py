@@ -1,11 +1,12 @@
+"""cmd addPr"""
 import json
 
-async def addPr_cmd(self, ctx, user: str = None):
+async def addpr_cmd(self, ctx, user: str = None):
+    """fonction pour ajouter un prenium a la conf"""
     if ctx.author.name in self.config['ADMIN']:
         if user is None :
             await ctx.send("Veuillez spécifier un utilisateur. Exemple : !addPr @misty_toonz")
             return
-        
         username = user.lstrip("@")
 
         if username in self.config['PRENIUM']:
