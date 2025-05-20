@@ -8,6 +8,7 @@ from cmd.turnoff import turnoff_cmd
 from cmd.gpt import gpt_cmd
 from cmd.addpr import addpr_cmd
 from cmd.rmpr import rmpr_cmd
+from react.wizebot import wizebot_cmd
 import os
 import json
 from twitchio.ext import commands
@@ -54,6 +55,9 @@ class C2SBOT(commands.Bot):
             await message.channel.send(
                 f"@{message.author.name} caca ? comme caca2squidgame mon createur!"
             )
+        
+        if message.author.name == "wizebot":
+            await wizebot_cmd(message)
 
         if len(message.content.split()) >= 30:
             await message.channel.send(
