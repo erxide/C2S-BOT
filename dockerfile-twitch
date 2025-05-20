@@ -22,4 +22,6 @@ COPY ./twitch/cmd/ ./cmd/
 
 COPY ./twitch/utils/ ./utils/
 
+COPY ./twitch/react/ ./react/
+
 CMD ["python", "bot.py"]
