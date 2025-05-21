@@ -16,4 +16,6 @@ COPY --from=builder /install/bun.lock ./bun.lock
 
 COPY ./src ./src
 
+COPY config.json config.json
+
 CMD [ "bun", "run", "start" ]
