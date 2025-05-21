@@ -10,6 +10,7 @@ import { rmPr_cmd } from './cmd/rmPr';
 import { turnOff_cmd } from './cmd/turnOff';
 import { turnOn_cmd } from './cmd/turnOn';
 import { gpt_cmd } from './cmd/gpt';
+import { wizebot_react } from './react/wizebot';
 
 let turnOff:boolean = false;
 const configPath:URL = new URL('../config.json', import.meta.url);
@@ -36,6 +37,12 @@ BOT.on('message', async (channel, tags, message, self) => {
   const msg = message.trim();
 
   if (!msg.startsWith('!') && !turnOff) {
+
+    if (auteur == "wizebot") {
+        console.log(`REACTION : ${BOT.getUsername()} a repondu a ${auteur}`);
+        wizebot_react(BOT, channel)
+    }
+
     if (msg.toLowerCase().includes('quoi')) {
         console.log(`REACTION : ${BOT.getUsername()} a repondu au quoi de ${auteur}`);
         BOT.say(channel, `@${auteur} quoicoubeh`);
