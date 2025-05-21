@@ -22,7 +22,7 @@ const BOT = new tmi.Client({
         username: 'cdeuxs',
         password: process.env.TWITCH_TOKEN
     },
-    channels : ['caca2squidgame']
+    channels : ['dhalsiiim']
 });
 
 BOT.connect();
