@@ -39,7 +39,7 @@ BOT.on('message', async (channel, tags, message, self) => {
 
   if (!msg.startsWith('!') && !turnOff) {
 
-    if (auteur == "wizebot") {
+    if (auteur == "WizeBot") {
         console.log(`REACTION : ${BOT.getUsername()} a repondu a ${auteur}`);
         wizebot_react(BOT, channel)
     }
