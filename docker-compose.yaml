@@ -1,0 +1,10 @@
+services:
+  bun-c2s-bot:
+    build:
+      context: .
+      dockerfile: dockerfile
+    image: bun-c2s-bot:latest
+    container_name: bun-c2s-bot
+    env_file:
+      - .env
+    restart: unless-stopped
