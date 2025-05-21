@@ -11,6 +11,7 @@ import { turnOff_cmd } from './cmd/turnOff';
 import { turnOn_cmd } from './cmd/turnOn';
 import { gpt_cmd } from './cmd/gpt';
 import { wizebot_react } from './react/wizebot';
+import { pieds_cmd } from './cmd/pieds';
 
 let turnOff:boolean = false;
 const configPath:URL = new URL('../config.json', import.meta.url);
@@ -21,7 +22,7 @@ const BOT = new tmi.Client({
         username: 'cdeuxs',
         password: process.env.TWITCH_TOKEN
     },
-    channels : ['dhalsiiim']
+    channels : ['caca2squidgame']
 });
 
 BOT.connect();
@@ -110,6 +111,10 @@ BOT.on('message', async (channel, tags, message, self) => {
 
                 case 'gpt':
                     gpt_cmd(BOT, channel, auteur, config, message);
+                    break;
+
+                case 'pieds':
+                    pieds_cmd(BOT, channel, auteur);
                     break;
 
                 default:
