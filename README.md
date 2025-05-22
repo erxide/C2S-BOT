@@ -23,6 +23,8 @@ Ce projet a été créé avec `bun init` sous bun v1.2.2. [Bun](https://bun.sh) 
 - répond 'fiouuu y'en a des mots là @username'
 si un user utilise 30 mots ou plus dans son message
 
+- répond à wizebot avec un message aléatoire désagréable lorsqu'il parle
+
 ## CMD :
 
 ### NORMIES :
@@ -49,6 +51,10 @@ si un user utilise 30 mots ou plus dans son message
 - Pour poser une question à chat gpt :
     ```txt
     !gpt <votre question>
+    ```
+- Pour envoyer un ascii art de pieds :
+    ```txt
+    !pieds
     ```
 
 ### ADMINS :

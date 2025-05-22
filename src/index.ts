@@ -114,7 +114,7 @@ BOT.on('message', async (channel, tags, message, self) => {
                     break;
 
                 case 'pieds':
-                    pieds_cmd(BOT, channel, auteur);
+                    pieds_cmd(BOT, channel, auteur, config);
                     break;
 
                 default:
