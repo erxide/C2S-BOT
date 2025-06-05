@@ -13,6 +13,7 @@ import { gpt_cmd } from './cmd/gpt';
 import { wizebot_react } from './react/wizebot';
 import { pieds_cmd } from './cmd/pieds';
 import { dance_cmd } from './cmd/dance';
+import { dance_react } from './react/dance';
 
 let turnOff:boolean = false;
 const configPath:URL = new URL('../config.json', import.meta.url);
@@ -43,6 +44,11 @@ BOT.on('message', async (channel, tags, message, self) => {
     if (auteur == "WizeBot") {
         console.log(`REACTION : ${BOT.getUsername()} a repondu a ${auteur}`);
         wizebot_react(BOT, channel)
+    }
+
+    if (msg.toLowerCase().includes('dinodance')) {
+        console.log(`REACTION : ${BOT.getUsername()} danse avec ${auteur}`);
+        dance_react(BOT, channel)
     }
 
     if (msg.toLowerCase().includes('quoi')) {
