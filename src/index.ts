@@ -12,6 +12,7 @@ import { turnOn_cmd } from './cmd/turnOn';
 import { gpt_cmd } from './cmd/gpt';
 import { wizebot_react } from './react/wizebot';
 import { pieds_cmd } from './cmd/pieds';
+import { dance_cmd } from './cmd/dance';
 
 let turnOff:boolean = false;
 const configPath:URL = new URL('../config.json', import.meta.url);
@@ -115,6 +116,10 @@ BOT.on('message', async (channel, tags, message, self) => {
 
                 case 'pieds':
                     pieds_cmd(BOT, channel, auteur, config);
+                    break;
+
+                case 'dance':
+                    dance_cmd(BOT, channel, auteur, config);
                     break;
 
                 default:
